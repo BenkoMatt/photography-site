@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS Admin — Jenna Lynn Photography</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background: #f5f5f5; color: #2c2c2c; }
+
+        /* ─── Top Bar ─── */
+        .topbar {
+            background: #2c2c2c; color: #fff; padding: 0 24px;
+            height: 56px; display: flex; align-items: center; justify-content: space-between;
+            position: sticky; top: 0; z-index: 100;
+        }
+        .topbar-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; }
+        .topbar-brand span { color: #c4758a; }
+        .topbar-actions { display: flex; gap: 10px; align-items: center; }
+        .topbar-status { font-size: 0.78rem; color: #aaa; }
+        .topbar-status.saved { color: #7a9b74; }
+        .topbar-status.unsaved { color: #d4a574; }
+        .btn {
+            padding: 8px 20px; border: none; border-radius: 4px; cursor: pointer;
+            font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 600;
+            letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.2s;
+        }
+        .btn-preview { background: #fff; color: #2c2c2c; }
+        .btn-preview:hover { background: #e0e0e0; }
+        .btn-save { background: #c4758a; color: #fff; }
+        .btn-save:hover { background: #a85a70; }
+        .btn-publish { background: #7a9b74; color: #fff; }
+        .btn-publish:hover { background: #5e7d58; }
+
+        /* ─── Layout ─── */
+        .layout { display: flex; height: calc(100vh - 56px); }
+
+        /* ─── Sidebar ─── */
+        .sidebar {
+            width: 220px; background: #fff; border-right: 1px solid #e0e0e0;
+            overflow-y: auto; flex-shrink: 0;
+        }
+        .nav-section { padding: 16px 0; border-bottom: 1px solid #f0f0f0; }
+        .nav-section-title {
+            font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em;
+            text-transform: uppercase; color: #999; padding: 0 20px 8px;
+        }
+        .nav-item {
+            display: flex; align-items: center; gap: 10px; padding: 10px 20px;
+            cursor: pointer; font-size: 0.85rem; color: #555; transition: all 0.15s;
+            border-left: 3px solid transparent;
+        }
+        .nav-item:hover { background: #f9f9f9; color: #2c2c2c; }
+        .nav-item.active { background: #fdf2f4; color: #c4758a; border-left-color: #c4758a; font-weight: 500; }
+        .nav-icon { font-size: 1.1rem; opacity: 0.7; }
+
+        /* ─── Main Content ─── */
+        .main { flex: 1; overflow-y: auto; padding: 32px 40px; }
+        .panel { display: none; max-width: 700px; }
+        .panel.active { display: block; }
+        .panel-title {
+            font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 500;
+            margin-bottom: 6px;
+        }
+        .panel-sub { font-size: 0.85rem; color: #888; margin-bottom: 28px; }
+
+        /* ─── Form Fields ─── */
+        .field { margin-bottom: 18px; }
+        .field-label {
+            display: block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em;
+            text-transform: uppercase; color: #888; margin-bottom: 6px;
+        }
+        .field-input, .field-textarea, .field-select {
+            width: 100%; padding: 10px 14px; border: 1px solid #ddd; border-radius: 4px;
+            font-family: 'Montserrat', sans-serif; font-size: 0.9rem; color: #333;
+            background: #fff; transition: border-color 0.2s;
+        }
+        .field-input:focus, .field-textarea:focus, .field-select:focus {
+            outline: none; border-color: #c4758a; box-shadow: 0 0 0 2px rgba(196,117,138,0.1);
+        }
+        .field-textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
+        .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+        /* ─── Repeatable Items ─── */
+        .items-list { margin-bottom: 20px; }
+        .item-card {
+            background: #fff; border: 1px solid #e0e0e0; border-radius: 8px;
+            padding: 20px; margin-bottom: 14px; position: relative;
+        }
+        .item-card-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid #f0f0f0;
+        }
+        .item-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 500; }
+        .item-actions { display: flex; gap: 6px; }
+        .item-btn {
+            background: none; border: 1px solid #ddd; border-radius: 4px; padding: 4px 10px;
+            cursor: pointer; font-size: 0.72rem; color: #666; transition: all 0.15s;
+        }
+        .item-btn:hover { border-color: #c4758a; color: #c4758a; }
+        .item-btn.danger:hover { border-color: #c0454a; color: #c0454a; }
+        .item-btn.move { font-size: 0.9rem; padding: 4px 8px; }
+
+        .sub-items { margin-top: 12px; padding-left: 16px; border-left: 2px solid #f0f0f0; }
+        .sub-item {
+            display: flex; gap: 8px; align-items: center; margin-bottom: 8px;
+        }
+        .sub-item .field-input { flex: 1; }
+        .sub-item-btn {
+            background: none; border: 1px solid #ddd; border-radius: 4px; width: 32px; height: 32px;
+            cursor: pointer; color: #999; font-size: 0.85rem; flex-shrink: 0;
+        }
+        .sub-item-btn:hover { border-color: #c0454a; color: #c0454a; }
+
+        .add-btn {
+            display: inline-block; padding: 8px 18px; background: #f9f9f9; border: 1px dashed #ccc;
+            border-radius: 6px; cursor: pointer; font-size: 0.8rem; color: #666; transition: all 0.2s;
+        }
+        .add-btn:hover { border-color: #c4758a; color: #c4758a; background: #fdf2f4; }
+
+        /* ─── Image Preview ─── */
+        .image-preview {
+            margin-top: 8px; width: 120px; height: 120px; border-radius: 6px;
+            overflow: hidden; border: 1px solid #e0e0e0; background: #f5f5f5;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .image-preview img { width: 100%; height: 100%; object-fit: cover; }
+        .image-preview .placeholder { font-size: 0.75rem; color: #999; text-align: center; padding: 10px; }
+
+        /* ─── Toast ─── */
+        .toast {
+            position: fixed; bottom: 24px; right: 24px; background: #2c2c2c; color: #fff;
+            padding: 14px 24px; border-radius: 8px; font-size: 0.85rem; z-index: 9999;
+            opacity: 0; transform: translateY(20px); transition: all 0.3s; pointer-events: none;
+        }
+        .toast.show { opacity: 1; transform: translateY(0); }
+        .toast.success { background: #5e7d58; }
+        .toast.error { background: #c0454a; }
+
+        /* ─── Publish Modal ─── */
+        .modal-overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 5000;
+            display: none; align-items: center; justify-content: center;
+        }
+        .modal-overlay.show { display: flex; }
+        .modal {
+            background: #fff; border-radius: 12px; padding: 32px; max-width: 440px;
+            width: 90%; text-align: center;
+        }
+        .modal h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; margin-bottom: 12px; }
+        .modal p { font-size: 0.9rem; color: #666; margin-bottom: 24px; line-height: 1.6; }
+        .modal-actions { display: flex; gap: 12px; justify-content: center; }
+        .modal .btn-cancel { background: #f0f0f0; color: #555; }
+        .modal .btn-cancel:hover { background: #e0e0e0; }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 768px) {
+            .sidebar { width: 180px; }
+            .main { padding: 20px; }
+            .field-row { grid-template-columns: 1fr; }
+            .topbar-status { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ─── Top Bar ─── -->
+<div class="topbar">
+    <div class="topbar-brand">Jenna Lynn <span>CMS</span></div>
+    <div class="topbar-actions">
+        <span class="topbar-status saved" id="saveStatus">All changes saved</span>
+        <button class="btn btn-preview" onclick="openPreview()">Preview Site</button>
+        <button class="btn btn-save" onclick="saveContent()">Save</button>
+        <button class="btn btn-publish" onclick="showPublishModal()">Publish</button>
+    </div>
+</div>
+
+<div class="layout">
+    <!-- ─── Sidebar ─── -->
+    <div class="sidebar">
+        <div class="nav-section">
+            <div class="nav-section-title">Site Settings</div>
+            <div class="nav-item active" data-panel="site" onclick="showPanel('site')"><span class="nav-icon">⚙</span> Brand & Contact</div>
+        </div>
+        <div class="nav-section">
+            <div class="nav-section-title">Homepage</div>
+            <div class="nav-item" data-panel="hero" onclick="showPanel('hero')"><span class="nav-icon">✦</span> Hero Section</div>
+            <div class="nav-item" data-panel="about" onclick="showPanel('about')"><span class="nav-icon">♡</span> About Me</div>
+            <div class="nav-item" data-panel="services" onclick="showPanel('services')"><span class="nav-icon">$</span> Pricing</div>
+            <div class="nav-item" data-panel="portfolio" onclick="showPanel('portfolio')"><span class="nav-icon">📷</span> Portfolio</div>
+            <div class="nav-item" data-panel="process" onclick="showPanel('process')"><span class="nav-icon">①</span> Process</div>
+            <div class="nav-item" data-panel="testimonials" onclick="showPanel('testimonials')"><span class="nav-icon">★</span> Testimonials</div>
+            <div class="nav-item" data-panel="faq" onclick="showPanel('faq')"><span class="nav-icon">?</span> FAQ</div>
+            <div class="nav-item" data-panel="contact" onclick="showPanel('contact')"><span class="nav-icon">✉</span> Contact</div>
+        </div>
+        <div class="nav-section">
+            <div class="nav-section-title">Client Galleries</div>
+            <div class="nav-item" data-panel="galleries" onclick="showPanel('galleries')"><span class="nav-icon">🔒</span> Gallery Settings</div>
+            <div class="nav-item" data-panel="gallery_photos" onclick="showPanel('gallery_photos')"><span class="nav-icon">🖼</span> Gallery Photos</div>
+        </div>
+    </div>
+
+    <!-- ─── Main Content ─── -->
+    <div class="main" id="mainContent">
+        <!-- Panels are injected by JavaScript -->
+    </div>
+</div>
+
+<!-- ─── Toast ─── -->
+<div class="toast" id="toast"></div>
+
+<!-- ─── Publish Modal ─── -->
+<div class="modal-overlay" id="publishModal">
+    <div class="modal">
+        <h3>Publish to Website?</h3>
+        <p>This will push your changes to GitHub and update your live website at<br><strong>benkomatt.github.io/photography-site</strong><br><br>The site will update in about 15 seconds after publishing.</p>
+        <div class="modal-actions">
+            <button class="btn btn-cancel" onclick="hidePublishModal()">Cancel</button>
+            <button class="btn btn-publish" onclick="publishToGithub()">Publish Now</button>
+        </div>
+    </div>
+</div>
+
+<script src="/admin/js"></script>
+</body>
+</html>

@@ -13,7 +13,7 @@
 </head>
 <body class="gallery-page">
 
-<!-- ============ GALLERY NAVBAR (Pixieset style) ============ -->
+<!-- Pixieset-style Navbar -->
 <nav class="ps-nav" id="psNav">
     <div class="ps-nav-inner">
         <div class="ps-nav-left">
@@ -39,10 +39,7 @@
     </div>
 </nav>
 
-<!-- ============ GALLERY PAGE ============ -->
 <main class="client-gallery-page">
-
-    <!-- Password Gate -->
     <div class="gallery-gate" id="galleryGate">
         <div class="gate-card">
             <div class="gate-icon">🔒</div>
@@ -54,18 +51,12 @@
                 <button type="submit" class="btn btn-primary btn-full">Unlock Gallery</button>
                 <p class="gate-error" id="gateError"></p>
             </form>
-            <p class="gate-hint">
-                Don't have a passcode?
-                <a href="index.html#galleries">Learn how to get one</a>
-            </p>
+            <p class="gate-hint">Don't have a passcode? <a href="index.html#galleries">Learn how to get one</a></p>
             <a href="index.html" class="gate-back">← Back to homepage</a>
         </div>
     </div>
 
-    <!-- Gallery Content (hidden until passcode entered) -->
     <div class="gallery-content hidden" id="galleryContent">
-
-        <!-- Cover Image (Pixieset style — full screen with title overlay) -->
         <div class="ps-cover" id="psCover">
             <div class="ps-cover-overlay"></div>
             <div class="ps-cover-frame">
@@ -80,7 +71,6 @@
             </div>
         </div>
 
-        <!-- Photo count + toolbar -->
         <div class="ps-toolbar" id="psToolbar">
             <div class="ps-toolbar-inner">
                 <span class="ps-photo-count"><span id="photoCount">0</span> photos</span>
@@ -101,21 +91,7 @@
             </div>
         </div>
 
-        <!-- Masonry Photo Grid (Pixieset style — natural aspect ratios) -->
         <div class="ps-masonry" id="galleryGrid">
-            <!--
-                ════════════════════════════════════════════════════════════════
-                DEMO GALLERY PHOTOS — Currently showing example photos
-                from the portfolio for demonstration purposes.
-
-                TO SET UP A REAL CLIENT GALLERY:
-                1. Put the client's edited photos in photos/client-photos/
-                2. Replace each <img> below with:
-                   <img src="photos/client-photos/clientname-01.jpg" alt="Description" loading="lazy">
-                3. Update the data-full and download href to match
-                4. Add/remove .ps-photo blocks as needed
-                ════════════════════════════════════════════════════════════════
-            -->
             <div class="ps-photo" data-full="photos/gallery/portraits/matt-grad.jpeg" data-w="918" data-h="1224">
                 <img src="photos/gallery/portraits/matt-grad.jpeg" alt="Graduation portrait" loading="lazy">
                 <div class="ps-photo-actions">
@@ -179,18 +155,13 @@
                     <a class="ps-action" title="Download" download href="photos/about/jenna-portrait.jpg">⬇</a>
                 </div>
             </div>
+
         </div>
 
-        <!-- Gallery footer -->
         <div class="ps-gallery-footer">
             <div class="ps-footer-divider"></div>
-            <p class="ps-footer-message">
-                Thank you for trusting me with your love story. 💕<br>
-                These photos are yours to cherish, share, and print forever.
-            </p>
-            <p class="ps-footer-verse">
-                <em>"Commit to the Lord whatever you do." — Proverbs 16:3</em>
-            </p>
+            <p class="ps-footer-message">Thank you for trusting me with your love story. 💕 These photos are yours to cherish, share, and print forever.</p>
+            <p class="ps-footer-verse"><em>"Commit to the Lord whatever you do." — Proverbs 16:3</em></p>
             <div class="ps-footer-actions">
                 <a href="index.html#contact" class="ps-footer-link">Contact Jenna</a>
                 <span class="ps-footer-dot">·</span>
@@ -199,38 +170,29 @@
         </div>
     </div>
 
-    <!-- PhotoSwipe-style Lightbox -->
     <div class="ps-lightbox" id="psLightbox" aria-hidden="true">
         <div class="ps-lb-topbar">
             <span class="ps-lb-counter" id="psLbCounter">1 / 9</span>
             <div class="ps-lb-actions">
-                <button class="ps-lb-btn" id="psLbFav" title="Favorite">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg>
-                </button>
-                <button class="ps-lb-btn" id="psLbShare" title="Share">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 16V4M8 8l4-4 4 4M20 14v6H4v-6"/></svg>
-                </button>
-                <button class="ps-lb-btn" id="psLbDownload" title="Download">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4v12M8 12l4 4 4-4M4 20h16"/></svg>
-                </button>
-                <button class="ps-lb-btn ps-lb-close" id="psLbClose" title="Close">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg>
-                </button>
+                <button class="ps-lb-btn" id="psLbFav" title="Favorite"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></button>
+                <button class="ps-lb-btn" id="psLbShare" title="Share"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 16V4M8 8l4-4 4 4M20 14v6H4v-6"/></svg></button>
+                <button class="ps-lb-btn" id="psLbDownload" title="Download"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4v12M8 12l4 4 4-4M4 20h16"/></svg></button>
+                <button class="ps-lb-btn ps-lb-close" id="psLbClose" title="Close"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
             </div>
         </div>
-        <button class="ps-lb-prev" id="psLbPrev" aria-label="Previous">
-            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1"><path d="M15 6l-6 6 6 6"/></svg>
-        </button>
-        <button class="ps-lb-next" id="psLbNext" aria-label="Next">
-            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1"><path d="M9 6l6 6-6 6"/></svg>
-        </button>
-        <div class="ps-lb-image-wrap" id="psLbImageWrap">
-            <img id="psLbImg" src="" alt="">
-        </div>
+        <button class="ps-lb-prev" id="psLbPrev" aria-label="Previous"><svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button class="ps-lb-next" id="psLbNext" aria-label="Next"><svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1"><path d="M9 6l6 6-6 6"/></svg></button>
+        <div class="ps-lb-image-wrap" id="psLbImageWrap"><img id="psLbImg" src="" alt=""></div>
     </div>
-
 </main>
 
+<script>
+var GALLERY_CODES = {
+    'DEMO-2024': { title: 'Sarah &amp; Michael's Wedding', date: 'June 15, 2024', cover: 'photos/gallery/portraits/matt-grad.jpeg' },
+    'SAMPLE-001': { title: 'Engagement Session', date: 'March 3, 2024', cover: 'photos/gallery/engagements/gracie-isaiah-engagement-1.jpeg' },
+    'COUPLE-LOVE': { title: 'Emily &amp; James', date: 'February 14, 2024', cover: 'photos/gallery/couples/JennaLynnPhotography-641.jpg' },
+};
+</script>
 <script src="js/gallery.js"></script>
 </body>
 </html>

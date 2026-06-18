@@ -1,0 +1,343 @@
+{
+  "site": {
+    "business_name": "Jenna Lynn Photography",
+    "tagline": "Wedding & Couples Photographer",
+    "email": "hello@photographybyjennalynn.com",
+    "phone": "",
+    "location": "Michigan — Available Worldwide",
+    "instagram": "@jennalynnphotography",
+    "instagram_url": "#",
+    "facebook_url": "#",
+    "pinterest_url": "#",
+    "footer_year": 2026,
+    "footer_verse_text": "Commit to the Lord whatever you do.",
+    "footer_verse_ref": "Proverbs 16:3"
+  },
+  "hero": {
+    "tagline": "Wedding & Couples Photographer",
+    "title_line1": "Your Love Story,",
+    "title_line2": "Beautifully Told",
+    "verse_text": "Three things will last forever — faith, hope, and love — and the greatest of these is love.",
+    "verse_ref": "1 Corinthians 13:13",
+    "subtitle": "Authentic, joyful photography that celebrates the love God gave you.",
+    "button1_text": "Inquire Now",
+    "button1_link": "#contact",
+    "button2_text": "View Gallery",
+    "button2_link": "#portfolio"
+  },
+  "about": {
+    "label": "Meet Jenna",
+    "title_line1": "I'm Not Just Your Photographer —",
+    "title_line2": "I'm Your Biggest Hype Girl",
+    "paragraphs": [
+      "I believe God writes beautiful love stories, and your photo session should reflect that. No stiff poses, no awkward silences — just the two of you, being completely yourselves, while I capture the real moments that matter.",
+      "Whether you're newly engaged, celebrating an anniversary, or saying \"I do\" — I'm here to make you feel confident, comfortable, and completely cared for. I'll hype you up, make you laugh (dad jokes included), and deliver a gallery that makes you fall in love all over again.",
+      "Proudly Michigan-made. I was born and raised in the Great Lakes State, and there's nowhere I'd rather build my business. Michigan gives us four breathtaking seasons, endless lakeshore backdrops, and sunsets that paint the sky over Lake Michigan in ways that make my camera weep with joy. Whether we're shooting among the dunes of Sleeping Bear, beneath a canopy of autumn maples, or in a cozy downtown café in Grand Rapids — this state is part of your story, and I wouldn't have it any other way.",
+      "Every love story is a gift from above — and it's my joy to help you tell yours. Based in Michigan — available for travel worldwide."
+    ],
+    "portrait_image": "photos/about/jenna-portrait.jpg",
+    "button_text": "Let's Get to Know Each Other",
+    "button_link": "#contact"
+  },
+  "services": {
+    "label": "Pricing",
+    "title": "Sessions Crafted With You in Mind",
+    "subtitle": "Every love story is unique — your photos should be too. Choose the experience that fits your season.",
+    "packages": [
+      {
+        "name": "Couples Session",
+        "price": "600",
+        "price_prefix": "$",
+        "price_suffix": "",
+        "tagline": "For the lovebirds who just want beautiful photos together",
+        "image": "photos/pricing/matt-and-jenna-couples-card.jpg",
+        "features": [
+          "90-minute on-location session",
+          "50+ fully edited high-res images",
+          "Outfit change included",
+          "Private online gallery",
+          "Print release",
+          "\"What to Wear\" style guide"
+        ],
+        "button_text": "Inquire",
+        "featured": false
+      },
+      {
+        "name": "Engagement Session",
+        "price": "800",
+        "price_prefix": "$",
+        "price_suffix": "",
+        "tagline": "Celebrate the yes that changed everything",
+        "image": "photos/pricing/jesse-and-sam-engagement-card.jpeg",
+        "features": [
+          "2-hour on-location session",
+          "75+ fully edited high-res images",
+          "Up to 2 outfit changes",
+          "Multiple locations",
+          "Private online gallery",
+          "Print release & \"What to Wear\" guide",
+          "Pre-session questionnaire & planning call",
+          "Local Michigan location scouting included"
+        ],
+        "button_text": "Inquire",
+        "featured": false
+      },
+      {
+        "name": "Wedding Collection",
+        "price": "2800",
+        "price_prefix": "Starting at $",
+        "price_suffix": "",
+        "tagline": "Your entire love story — from getting ready to the last dance",
+        "image": "photos/pricing/gracie-and-isaiah-wedding-card.jpeg",
+        "features": [
+          "8 hours of wedding day coverage",
+          "400+ fully edited high-res images",
+          "Second photographer included",
+          "Engagement session included",
+          "Private online gallery",
+          "Print release",
+          "Detailed timeline planning"
+        ],
+        "button_text": "Inquire",
+        "featured": true
+      }
+    ],
+    "note": "Custom packages and add-ons available — let's build something perfect for you. Proudly serving Michigan couples and beyond."
+  },
+  "portfolio": {
+    "label": "Portfolio",
+    "title": "Love in Every Frame",
+    "subtitle": "A glimpse into the love stories I've had the honor of telling — every one a blessing from above.",
+    "cta_text": "See Your Name Here — Book a Session",
+    "cta_link": "#contact",
+    "photos": [
+      {
+        "src": "photos/gallery/portraits/matt-grad.jpeg",
+        "alt": "Graduation portrait",
+        "category": "portrait",
+        "tall": true
+      },
+      {
+        "src": "photos/gallery/couples/JennaLynnPhotography-641.jpg",
+        "alt": "Couples session photo",
+        "category": "couples",
+        "tall": false
+      },
+      {
+        "src": "photos/gallery/weddings/tate-and-friends-running.jpg",
+        "alt": "Wedding celebration",
+        "category": "wedding",
+        "tall": true
+      },
+      {
+        "src": "photos/gallery/engagements/gracie-isaiah-engagement-1.jpeg",
+        "alt": "Engagement session",
+        "category": "engagement",
+        "tall": false
+      },
+      {
+        "src": "photos/gallery/portraits/slyvie-bear-portrait-2.jpeg",
+        "alt": "Portrait session",
+        "category": "portrait",
+        "tall": true
+      }
+    ]
+  },
+  "process": {
+    "label": "How It Works",
+    "title": "From First Hello to Final Gallery",
+    "subtitle": "I've designed every step to be easy, personal, and actually fun.",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Connect",
+        "text": "Fill out the inquiry form and tell me all about you two! I'll get back to you within 24 hours — usually sooner. I pray over every inquiry and can't wait to hear your story."
+      },
+      {
+        "number": "02",
+        "title": "Plan",
+        "text": "I'll send over my shoot guide, a fun couples questionnaire, and we'll plan out every detail — from location scouting to outfit coordination. No stress, just joyful anticipation!"
+      },
+      {
+        "number": "03",
+        "title": "Party",
+        "text": "Shoot day should feel like a celebration! I'll guide you through natural poses, crack jokes, hype you up, and capture the real joy that happens when you're just being yourselves — the way God made you."
+      },
+      {
+        "number": "04",
+        "title": "Relive",
+        "text": "Within 72 hours you'll see sneak peeks, and your full gallery arrives within 3–4 weeks. Every image hand-edited with care — because your story deserves nothing less. Ready to print, share, and treasure forever."
+      }
+    ]
+  },
+  "testimonials": {
+    "label": "Kind Words",
+    "title": "Don't Just Take My Word for It",
+    "reviews": [
+      {
+        "stars": 5,
+        "text": "She made us feel so comfortable and natural. Even my husband — who hates taking photos — said he had fun. We felt truly seen!",
+        "author": "[Client Name]"
+      },
+      {
+        "stars": 5,
+        "text": "Somehow she captured the way he looks at me when I'm not looking. Every photo tells our story perfectly — what a blessing!",
+        "author": "[Client Name]"
+      },
+      {
+        "stars": 5,
+        "text": "From the first call, we knew she was the one. The gallery made us fall in love all over again. We are so thankful — absolutely worth every penny.",
+        "author": "[Client Name]"
+      }
+    ]
+  },
+  "faq": {
+    "label": "Got Questions?",
+    "title": "The Couple Session Q&A",
+    "items": [
+      {
+        "question": "We're not models — are you sure this is for us?",
+        "answer": "Absolutely! Most of my couples have never had professional photos taken before. That's my specialty — making you feel completely at ease, guiding you into flattering poses, and capturing genuine moments. God created you beautifully, and my job is simply to let that shine through!",
+        "open": true
+      },
+      {
+        "question": "How many images will we receive and when?",
+        "answer": "Depending on your session length, you'll receive 50–75+ fully edited high-resolution images. Sneak peeks land in your inbox within 72 hours, and the full gallery is delivered within 3–4 weeks.",
+        "open": false
+      },
+      {
+        "question": "What's your editing style?",
+        "answer": "My style is bright, warm, and true-to-life with a touch of editorial polish. I focus on clean skin tones, vibrant colors, and natural light — photos that feel timeless, not trendy.",
+        "open": false
+      },
+      {
+        "question": "Do you offer payment plans?",
+        "answer": "Yes! I totally understand that life gets expensive. Payment plans are available for all packages — just ask when you inquire. I never want cost to be the reason you miss out on documenting the love story God gave you.",
+        "open": false
+      },
+      {
+        "question": "What if it rains on our session day?",
+        "answer": "No worries! I keep a close eye on the forecast and we'll reschedule if needed — no extra charge. Some of my favorite sessions have happened on overcast days with the most beautiful soft light. Even the weather is in His hands!",
+        "open": false
+      },
+      {
+        "question": "Do you travel for sessions?",
+        "answer": "Yes! I'm based in Michigan and include travel within a 30-mile radius. For destinations further afield, I'm happy to provide a custom travel quote. Adventure sessions are my favorite!",
+        "open": false
+      }
+    ]
+  },
+  "client_galleries": {
+    "label": "For Clients",
+    "title": "Your private gallery awaits",
+    "subtitle": "Once your photos are edited and ready, they'll be available in your personal, password-protected gallery. View, share with family, and download your favorites — all in one place.",
+    "delivery_time": "3–4 weeks",
+    "intro_heading": "How it works",
+    "intro_steps": [
+      "After your session, I carefully edit each image with love and intention.",
+      "You'll receive an email with your private gallery link and a personal passcode.",
+      "Enter your passcode below to view, share, and download your photos anytime."
+    ],
+    "features": [
+      "Full-resolution downloads",
+      "Shareable link for family & friends",
+      "Favorite & save photos for printing",
+      "Mobile & desktop friendly"
+    ],
+    "galleries": [
+      {
+        "code": "DEMO-2024",
+        "title": "Sarah & Michael's Wedding",
+        "date": "June 15, 2024",
+        "cover": "photos/gallery/portraits/matt-grad.jpeg"
+      },
+      {
+        "code": "SAMPLE-001",
+        "title": "Engagement Session",
+        "date": "March 3, 2024",
+        "cover": "photos/gallery/engagements/gracie-isaiah-engagement-1.jpeg"
+      },
+      {
+        "code": "COUPLE-LOVE",
+        "title": "Emily & James",
+        "date": "February 14, 2024",
+        "cover": "photos/gallery/couples/JennaLynnPhotography-641.jpg"
+      }
+    ]
+  },
+  "contact": {
+    "label": "Let's Connect",
+    "title": "Ready to Have Some Fun?",
+    "intro": "I'm so glad you're here! Fill out the form and tell me a little about yourselves and what you're dreaming of. I pray over every inquiry and can't wait to hear your story — I'll get back to you within 24 hours, usually sooner!",
+    "verse_text": "Commit to the Lord whatever you do.",
+    "verse_ref": "Proverbs 16:3",
+    "form_note": "I respond to all inquiries within 24 hours. Can't wait to hear from you! 💕",
+    "session_types": [
+      "Couples Session",
+      "Engagement Session",
+      "Wedding Collection",
+      "Something else!"
+    ]
+  },
+  "gallery_page": {
+    "footer_message": "Thank you for trusting me with your love story. 💕 These photos are yours to cherish, share, and print forever.",
+    "footer_verse_text": "Commit to the Lord whatever you do.",
+    "footer_verse_ref": "Proverbs 16:3",
+    "photos": [
+      {
+        "src": "photos/gallery/portraits/matt-grad.jpeg",
+        "alt": "Graduation portrait",
+        "w": 918,
+        "h": 1224
+      },
+      {
+        "src": "photos/gallery/couples/JennaLynnPhotography-641.jpg",
+        "alt": "Couples session",
+        "w": 2912,
+        "h": 2048
+      },
+      {
+        "src": "photos/gallery/weddings/tate-and-friends-running.jpg",
+        "alt": "Wedding celebration",
+        "w": 1333,
+        "h": 2000
+      },
+      {
+        "src": "photos/gallery/engagements/gracie-isaiah-engagement-1.jpeg",
+        "alt": "Engagement session",
+        "w": 1244,
+        "h": 1737
+      },
+      {
+        "src": "photos/gallery/portraits/slyvie-bear-portrait-2.jpeg",
+        "alt": "Portrait session",
+        "w": 1450,
+        "h": 1933
+      },
+      {
+        "src": "photos/pricing/matt-and-jenna-couples-card.jpg",
+        "alt": "Couples photo",
+        "w": 1200,
+        "h": 1500
+      },
+      {
+        "src": "photos/pricing/jesse-and-sam-engagement-card.jpeg",
+        "alt": "Engagement photo",
+        "w": 1638,
+        "h": 2048
+      },
+      {
+        "src": "photos/pricing/gracie-and-isaiah-wedding-card.jpeg",
+        "alt": "Wedding photo",
+        "w": 2065,
+        "h": 2581
+      },
+      {
+        "src": "photos/about/jenna-portrait.jpg",
+        "alt": "Portrait",
+        "w": 2571,
+        "h": 3600
+      }
+    ]
+  }
+}

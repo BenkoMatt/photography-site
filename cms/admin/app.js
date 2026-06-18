@@ -113,8 +113,11 @@ function showPanel(name) {
         case 'contact': html = panelContact(); break;
         case 'galleries': html = panelGalleries(); break;
         case 'gallery_photos': html = panelGalleryPhotos(); break;
+        case 'theme': html = panelTheme(); break;
+        case 'mobile': html = panelMobile(); break;
     }
     document.getElementById('mainContent').innerHTML = html;
+    initDragAndDrop();
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -313,7 +316,7 @@ function panelServices() {
         text('services.label', 'Section Label') +
         text('services.title', 'Section Title') +
         textarea('services.subtitle', 'Section Subtitle') +
-        '<div class="items-list">' + packagesHtml + '</div>' +
+        '<div class="items-list" data-array="services.packages">' + packagesHtml + '</div>' +
         '<button class="add-btn" onclick="addPackage()">+ Add Package</button>' +
         '<div style="height:20px"></div>' +
         textarea('services.note', 'Bottom Note') +
@@ -350,7 +353,7 @@ function panelPortfolio() {
         text('portfolio.label', 'Section Label') +
         text('portfolio.title', 'Section Title') +
         textarea('portfolio.subtitle', 'Section Subtitle') +
-        '<div class="items-list">' + photosHtml + '</div>' +
+        '<div class="items-list" data-array="portfolio.photos">' + photosHtml + '</div>' +
         '<button class="add-btn" onclick="addPortfolioPhoto()">+ Add Photo</button>' +
         '<div style="height:20px"></div>' +
         text('portfolio.cta_text', 'CTA Button Text') +
@@ -382,7 +385,7 @@ function panelProcess() {
         text('process.label', 'Section Label') +
         text('process.title', 'Section Title') +
         textarea('process.subtitle', 'Section Subtitle') +
-        '<div class="items-list">' + stepsHtml + '</div>' +
+        '<div class="items-list" data-array="process.steps">' + stepsHtml + '</div>' +
         '<button class="add-btn" onclick="addProcessStep()">+ Add Step</button>' +
     '</div>';
 }
@@ -413,7 +416,7 @@ function panelTestimonials() {
         '<div class="panel-sub">Client reviews shown in the "Kind Words" section.</div>' +
         text('testimonials.label', 'Section Label') +
         text('testimonials.title', 'Section Title') +
-        '<div class="items-list">' + reviewsHtml + '</div>' +
+        '<div class="items-list" data-array="testimonials.reviews">' + reviewsHtml + '</div>' +
         '<button class="add-btn" onclick="addTestimonial()">+ Add Testimonial</button>' +
     '</div>';
 }
@@ -441,7 +444,7 @@ function panelFaq() {
         '<div class="panel-sub">Frequently asked questions section.</div>' +
         text('faq.label', 'Section Label') +
         text('faq.title', 'Section Title') +
-        '<div class="items-list">' + itemsHtml + '</div>' +
+        '<div class="items-list" data-array="faq.items">' + itemsHtml + '</div>' +
         '<button class="add-btn" onclick="addFaqItem()">+ Add FAQ Item</button>' +
     '</div>';
 }
@@ -508,7 +511,7 @@ function panelGalleries() {
         '<div class="sub-items">' + featuresHtml + '</div>' +
         '<button class="add-btn" onclick="addItem(\'client_galleries.features\', \'New feature\')">+ Add Feature</button>' +
         '</div>' +
-        '<div class="items-list">' + galleriesHtml + '</div>' +
+        '<div class="items-list" data-array="client_galleries.galleries">' + galleriesHtml + '</div>' +
         '<button class="add-btn" onclick="addGallery()">+ Add Client Gallery</button>' +
     '</div>';
 }
@@ -536,7 +539,7 @@ function panelGalleryPhotos() {
         textarea('gallery_page.footer_message', 'Footer Message') +
         text('gallery_page.footer_verse_text', 'Footer Verse Text') +
         text('gallery_page.footer_verse_ref', 'Footer Verse Reference') +
-        '<div class="items-list">' + photosHtml + '</div>' +
+        '<div class="items-list" data-array="gallery_page.photos">' + photosHtml + '</div>' +
         '<button class="add-btn" onclick="addGalleryPhoto()">+ Add Photo</button>' +
     '</div>';
 }
@@ -664,4 +667,245 @@ function showPublishModal() {
 
 function hidePublishModal() {
     document.getElementById('publishModal').classList.remove('show');
+}
+
+
+// ═══════════════════════════════════════════════════════════════
+// DRAG AND DROP REORDERING
+// ═══════════════════════════════════════════════════════════════
+function initDragAndDrop() {
+    var containers = document.querySelectorAll('.items-list');
+    containers.forEach(function(container) {
+        var cards = container.querySelectorAll('.item-card');
+        cards.forEach(function(card) {
+            card.draggable = true;
+            card.addEventListener('dragstart', handleDragStart);
+            card.addEventListener('dragover', handleDragOver);
+            card.addEventListener('drop', handleDrop);
+            card.addEventListener('dragend', handleDragEnd);
+        });
+    });
+}
+
+var draggedElement = null;
+var draggedArrayPath = null;
+var draggedIndex = null;
+
+function handleDragStart(e) {
+    draggedElement = this;
+    this.style.opacity = '0.4';
+    var itemsList = this.closest('.items-list');
+    if (itemsList) {
+        draggedArrayPath = itemsList.getAttribute('data-array');
+        var cards = itemsList.querySelectorAll('.item-card');
+        cards.forEach(function(c, i) { if (c === draggedElement) draggedIndex = i; });
+    }
+}
+
+function handleDragOver(e) {
+    if (e.preventDefault) e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    return false;
+}
+
+function handleDrop(e) {
+    if (e.stopPropagation) e.stopPropagation();
+    if (e.preventDefault) e.preventDefault();
+
+    if (draggedElement !== this && draggedArrayPath) {
+        var itemsList = this.closest('.items-list');
+        if (!itemsList || itemsList.getAttribute('data-array') !== draggedArrayPath) return;
+
+        var cards = Array.from(itemsList.querySelectorAll('.item-card'));
+        var fromIndex = draggedIndex;
+        var toIndex = cards.indexOf(this);
+
+        var arr = getArray(draggedArrayPath);
+        var movedItem = arr.splice(fromIndex, 1)[0];
+        arr.splice(toIndex, 0, movedItem);
+
+        setSaveStatus(false);
+        showPanel(currentPanel);
+    }
+    return false;
+}
+
+function handleDragEnd(e) {
+    if (draggedElement) draggedElement.style.opacity = '';
+    draggedElement = null;
+    draggedArrayPath = null;
+    draggedIndex = null;
+}
+
+
+// ═══════════════════════════════════════════════════════════════
+// COLOR PICKER FIELD
+// ═══════════════════════════════════════════════════════════════
+function colorField(path, label) {
+    var val = getVal(path);
+    return '<div class="field">' +
+        '<label class="field-label">' + label + '</label>' +
+        '<div style="display:flex; gap:10px; align-items:center;">' +
+            '<input type="color" value="' + esc(val) + '" oninput="setVal(\'' + path + '\', this.value); this.nextElementSibling.value = this.value" style="width:50px; height:40px; border:1px solid #ddd; border-radius:4px; cursor:pointer;">' +
+            '<input class="field-input" type="text" value="' + esc(val) + '" oninput="setVal(\'' + path + '\', this.value); this.previousElementSibling.value = this.value" style="flex:1; font-family:monospace;">' +
+        '</div></div>';
+}
+
+function rangeField(path, label, min, max, step, unit) {
+    var val = getVal(path);
+    unit = unit || '';
+    return '<div class="field">' +
+        '<label class="field-label">' + label + ' — <span id="' + path.replace(/\./g, '_') + '_val">' + val + unit + '</span></label>' +
+        '<input type="range" min="' + min + '" max="' + max + '" step="' + step + '" value="' + val + '" ' +
+        'oninput="setVal(\'' + path + '\', parseFloat(this.value)); document.getElementById(\'' + path.replace(/\./g, '_') + '_val\').textContent = this.value + \'' + unit + '\'" ' +
+        'style="width:100%; cursor:pointer;">' +
+    '</div>';
+}
+
+function selectField(path, label, options) {
+    var val = getVal(path);
+    var opts = options.map(function(o) {
+        return '<option value="' + o.value + '" ' + (val === o.value ? 'selected' : '') + '>' + o.label + '</option>';
+    }).join('');
+    return '<div class="field"><label class="field-label">' + label + '</label>' +
+        '<select class="field-select" onchange="setVal(\'' + path + '\', this.value)">' + opts + '</select></div>';
+}
+
+function checkboxField(path, label) {
+    var val = getVal(path);
+    return '<div class="field"><label style="display:flex; align-items:center; gap:8px; cursor:pointer;">' +
+        '<input type="checkbox" ' + (val ? 'checked' : '') + ' onchange="setVal(\'' + path + '\', this.checked)" style="width:18px; height:18px;">' +
+        '<span style="font-size:0.9rem;">' + label + '</span></label></div>';
+}
+
+
+// ═══════════════════════════════════════════════════════════════
+// THEME & COLORS PANEL
+// ═══════════════════════════════════════════════════════════════
+function panelTheme() {
+    return '<div class="panel active">' +
+        '<div class="panel-title">Theme & Colors</div>' +
+        '<div class="panel-sub">Customize your site colors, backgrounds, fonts, and layout.</div>' +
+
+        '<h3 style="font-family:Cormorant Garamond,serif; font-size:1.2rem; margin:20px 0 12px; color:#2c2c2c;">Accent Colors</h3>' +
+        colorField('theme.accent_color', 'Primary Accent (buttons, links, highlights)') +
+        colorField('theme.accent_color_hover', 'Accent Hover Color') +
+        colorField('theme.accent_color_light', 'Accent Light (soft backgrounds)') +
+
+        '<h3 style="font-family:Cormorant Garamond,serif; font-size:1.2rem; margin:24px 0 12px; color:#2c2c2c;">Text Colors</h3>' +
+        colorField('theme.text_color', 'Primary Text') +
+        colorField('theme.text_color_secondary', 'Secondary Text') +
+
+        '<h3 style="font-family:Cormorant Garamond,serif; font-size:1.2rem; margin:24px 0 12px; color:#2c2c2c;">Backgrounds</h3>' +
+        colorField('theme.background_color', 'Main Background') +
+        colorField('theme.background_color_alt', 'Alt Background (sections)') +
+        colorField('theme.footer_background', 'Footer Background') +
+        colorField('theme.footer_text_color', 'Footer Text Color') +
+
+        '<h3 style="font-family:Cormorant Garamond,serif; font-size:1.2rem; margin:24px 0 12px; color:#2c2c2c;">Hero Background</h3>' +
+        selectField('theme.hero_type', 'Hero Background Type', [
+            {value: 'gradient', label: 'Gradient (soft colors)'},
+            {value: 'image', label: 'Photo Image'},
+            {value: 'solid', label: 'Solid Color'}
+        ]) +
+        '<div id="heroGradientOpts">' +
+            colorField('theme.hero_gradient_start', 'Gradient Color 1') +
+            colorField('theme.hero_gradient_mid', 'Gradient Color 2') +
+            colorField('theme.hero_gradient_end', 'Gradient Color 3') +
+        '</div>' +
+        '<div id="heroImageOpts">' +
+            imageField('theme.hero_image', 'Hero Background Image') +
+            rangeField('theme.hero_overlay_opacity', 'Dark Overlay Opacity', 0, 0.8, 0.05, '') +
+        '</div>' +
+        '<div id="heroSolidOpts">' +
+            colorField('theme.hero_gradient_start', 'Solid Background Color') +
+        '</div>' +
+        colorField('theme.hero_text_color', 'Hero Text Color (for gradient/solid)') +
+
+        '<h3 style="font-family:Cormorant Garamond,serif; font-size:1.2rem; margin:24px 0 12px; color:#2c2c2c;">Layout</h3>' +
+        rangeField('theme.section_spacing', 'Section Spacing', 40, 200, 10, 'px') +
+        rangeField('theme.portfolio_columns', 'Portfolio Columns', 1, 5, 1, '') +
+        rangeField('theme.portfolio_gap', 'Photo Gap', 0, 40, 2, 'px') +
+        rangeField('theme.gallery_columns', 'Gallery Columns', 1, 5, 1, '') +
+        rangeField('theme.gallery_gap', 'Gallery Photo Gap', 0, 20, 1, 'px') +
+        rangeField('theme.package_border_radius', 'Card Border Radius', 0, 20, 1, 'px') +
+        rangeField('theme.button_border_radius', 'Button Border Radius', 0, 50, 1, 'px') +
+
+        '<h3 style="font-family:Cormorant Garamond,serif; font-size:1.2rem; margin:24px 0 12px; color:#2c2c2c;">Fonts</h3>' +
+        selectField('theme.font_serif', 'Heading Font', [
+            {value: 'Cormorant Garamond', label: 'Cormorant Garamond (current — elegant serif)'},
+            {value: 'Playfair Display', label: 'Playfair Display (classic serif)'},
+            {value: 'DM Serif Display', label: 'DM Serif Display (modern serif)'},
+            {value: 'Lora', label: 'Lora (warm serif)'},
+            {value: 'Italiana', label: 'Italiana (fashion serif)'}
+        ]) +
+        selectField('theme.font_sans', 'Body Font', [
+            {value: 'Montserrat', label: 'Montserrat (current — clean sans)'},
+            {value: 'Lato', label: 'Lato (friendly sans)'},
+            {value: 'Open Sans', label: 'Open Sans (neutral sans)'},
+            {value: 'Quicksand', label: 'Quicksand (rounded sans)'},
+            {value: 'Raleway', label: 'Raleway (elegant sans)'}
+        ]) +
+
+        '<div style="margin-top:30px; padding:20px; background:#f9f9f9; border-radius:8px; border:1px solid #eee;">' +
+            '<p style="font-size:0.85rem; color:#888; line-height:1.6;">' +
+                '<strong>Tip:</strong> After changing colors, click <strong>Save</strong> then <strong>Preview</strong> to see how it looks. ' +
+                'Changes only go live when you click <strong>Publish</strong>.' +
+            '</p>' +
+        '</div>' +
+    '</div>';
+}
+
+
+// ═══════════════════════════════════════════════════════════════
+// MOBILE PANEL
+// ═══════════════════════════════════════════════════════════════
+function panelMobile() {
+    return '<div class="panel active">' +
+        '<div class="panel-title">Mobile Layout</div>' +
+        '<div class="panel-sub">Customize how your site looks on phones. The phone preview shows a live mockup.</div>' +
+
+        '<div style="display:flex; gap:30px; flex-wrap:wrap; align-items:flex-start;">' +
+
+            '<div style="flex:1; min-width:300px;">' +
+                '<h3 style="font-family:Cormorant Garamond,serif; font-size:1.2rem; margin:0 0 12px; color:#2c2c2c;">Layout</h3>' +
+                rangeField('mobile.font_scale', 'Font Scale', 0.7, 1.2, 0.05, 'rem') +
+                rangeField('mobile.section_spacing', 'Section Spacing', 30, 120, 10, 'px') +
+                rangeField('mobile.hero_height', 'Hero Height', 50, 100, 5, 'vh') +
+                rangeField('mobile.hero_title_size', 'Hero Title Size', 1.5, 5, 0.1, 'rem') +
+
+                '<h3 style="font-family:Cormorant Garamond,serif; font-size:1.2rem; margin:24px 0 12px; color:#2c2c2c;">Photo Grids</h3>' +
+                rangeField('mobile.portfolio_columns', 'Portfolio Columns', 1, 3, 1, '') +
+                rangeField('mobile.portfolio_gap_mobile', 'Portfolio Gap', 0, 20, 1, 'px') +
+                rangeField('mobile.gallery_columns', 'Gallery Columns', 1, 3, 1, '') +
+                rangeField('mobile.gallery_gap_mobile', 'Gallery Gap', 0, 20, 1, 'px') +
+                rangeField('mobile.gallery_cover_height', 'Gallery Cover Height', 40, 100, 5, 'vh') +
+
+                '<h3 style="font-family:Cormorant Garamond,serif; font-size:1.2rem; margin:24px 0 12px; color:#2c2c2c;">Section Visibility</h3>' +
+                '<p style="font-size:0.82rem; color:#888; margin-bottom:12px;">Hide sections you don\'t want mobile visitors to see (keeps the page faster).</p>' +
+                checkboxField('mobile.show_process_on_mobile', 'Show Process section on mobile') +
+                checkboxField('mobile.show_testimonials_on_mobile', 'Show Testimonials on mobile') +
+                checkboxField('mobile.show_faq_on_mobile', 'Show FAQ on mobile') +
+                checkboxField('mobile.show_instagram_on_mobile', 'Show Instagram feed on mobile') +
+
+                '<h3 style="font-family:Cormorant Garamond,serif; font-size:1.2rem; margin:24px 0 12px; color:#2c2c2c;">Navigation</h3>' +
+                selectField('mobile.nav_style', 'Mobile Nav Style', [
+                    {value: 'hamburger', label: 'Hamburger Menu (slides out)'},
+                    {value: 'dropdown', label: 'Dropdown Menu (expands down)'}
+                ]) +
+            '</div>' +
+
+            '<div style="flex-shrink:0;">' +
+                '<h3 style="font-family:Cormorant Garamond,serif; font-size:1.2rem; margin:0 0 12px; color:#2c2c2c;">Live Phone Preview</h3>' +
+                '<div style="width:280px; height:560px; border:8px solid #2c2c2c; border-radius:32px; overflow:hidden; background:#fff; box-shadow:0 10px 40px rgba(0,0,0,0.15);">' +
+                    '<div style="width:100%; height:100%; overflow-y:auto; border-radius:24px;">' +
+                        '<iframe id="mobilePreviewFrame" src="/" style="width:100%; height:100%; border:none; pointer-events:none;" onload="this.style.opacity=1"></iframe>' +
+                    '</div>' +
+                '</div>' +
+                '<p style="text-align:center; font-size:0.78rem; color:#888; margin-top:10px;">Save to update preview</p>' +
+                '<button class="btn btn-save" style="margin-top:8px; width:100%;" onclick="saveContent(); setTimeout(function(){document.getElementById(\'mobilePreviewFrame\').src=\'/\'+\'?\'+Date.now()},500)">Save & Refresh Preview</button>' +
+            '</div>' +
+
+        '</div>' +
+    '</div>';
 }

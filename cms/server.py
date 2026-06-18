@@ -62,6 +62,112 @@ def esc(text):
             .replace('"', "&quot;"))
 
 
+def build_theme_css(c):
+    """Generate dynamic CSS from theme settings"""
+    t = c.get("theme", {})
+
+    accent = t.get("accent_color", "#c4758a")
+    accent_hover = t.get("accent_color_hover", "#a85a70")
+    accent_light = t.get("accent_color_light", "#fdf2f4")
+    text_color = t.get("text_color", "#2c2c2c")
+    text_secondary = t.get("text_color_secondary", "#555555")
+    bg_color = t.get("background_color", "#ffffff")
+    bg_alt = t.get("background_color_alt", "#fafafa")
+    footer_bg = t.get("footer_background", "#2c2c2c")
+    footer_text = t.get("footer_text_color", "#cccccc")
+    section_spacing = t.get("section_spacing", 120)
+    portfolio_cols = t.get("portfolio_columns", 3)
+    portfolio_gap = t.get("portfolio_gap", 16)
+    gallery_cols = t.get("gallery_columns", 3)
+    gallery_gap = t.get("gallery_gap", 4)
+    pkg_radius = t.get("package_border_radius", 4)
+    btn_radius = t.get("button_border_radius", 0)
+
+    css = f"""
+    /* ─── Theme Overrides (from CMS) ─── */
+    :root {{
+        --rose: {accent};
+        --rose-deep: {accent_hover};
+        --rose-light: {accent_light};
+        --charcoal: {text_color};
+        --gray: {text_secondary};
+        --ivory: {bg_color};
+        --cream-deep: {bg_alt};
+    }}
+    body {{ background: {bg_color}; color: {text_color}; }}
+    .footer {{ background: {footer_bg}; color: {footer_text}; }}
+    .section-pad, .about, .services, .portfolio, .process,
+    .testimonials, .faq, .galleries, .contact {{
+        padding-top: {section_spacing}px;
+        padding-bottom: {section_spacing}px;
+    }}
+    .packages-grid {{ grid-template-columns: repeat({portfolio_cols}, 1fr); gap: {portfolio_gap}px; }}
+    .portfolio-grid {{ grid-template-columns: repeat({portfolio_cols}, 1fr); gap: {portfolio_gap}px; }}
+    .package-card {{ border-radius: {pkg_radius}px; }}
+    .btn {{ border-radius: {btn_radius}px; }}
+    .ps-masonry {{ column-count: {gallery_cols}; column-gap: {gallery_gap}px; }}
+    """
+
+    # Hero background
+    hero_type = t.get("hero_type", "gradient")
+    if hero_type == "gradient":
+        g1 = t.get("hero_gradient_start", "#fdf2f4")
+        g2 = t.get("hero_gradient_mid", "#fef9f0")
+        g3 = t.get("hero_gradient_end", "#f0f7f4")
+        css += f".hero {{ background: linear-gradient(135deg, {g1} 0%, {g2} 50%, {g3} 100%); }}\n"
+        css += f".hero-title, .hero-tag, .hero-sub {{ color: {t.get('hero_text_color', '#2c2c2c')}; }}\n"
+    elif hero_type == "image":
+        hero_img = t.get("hero_image", "")
+        opacity = t.get("hero_overlay_opacity", 0.3)
+        if hero_img:
+            css += f".hero {{ background: url('{hero_img}') center/cover no-repeat; }}\n"
+            css += f".hero-overlay {{ background: rgba(0,0,0,{opacity}); }}\n"
+            css += f".hero-title, .hero-tag, .hero-sub {{ color: #fff; }}\n"
+    elif hero_type == "solid":
+        css += f".hero {{ background: {t.get('hero_gradient_start', '#fdf2f4')}; }}\n"
+        css += f".hero-title, .hero-tag, .hero-sub {{ color: {t.get('hero_text_color', '#2c2c2c')}; }}\n"
+
+    # Mobile overrides
+    m = c.get("mobile", {})
+    if m:
+        m_cols = m.get("portfolio_columns", 1)
+        m_g_cols = m.get("gallery_columns", 1)
+        m_font = m.get("font_scale", 0.9)
+        m_hero_h = m.get("hero_height", "70vh")
+        m_hero_title = m.get("hero_title_size", 2.5)
+        m_spacing = m.get("section_spacing", 60)
+        m_cover_h = m.get("gallery_cover_height", "50vh")
+        m_pgap = m.get("portfolio_gap_mobile", 0)
+        m_ggap = m.get("gallery_gap_mobile", 0)
+
+        css += f"""
+        @media (max-width: 600px) {{
+            .packages-grid, .portfolio-grid {{ grid-template-columns: repeat({m_cols}, 1fr) !important; gap: {m_pgap}px !important; }}
+            .ps-masonry {{ column-count: {m_g_cols} !important; column-gap: {m_ggap}px !important; }}
+            body {{ font-size: {m_font}rem; }}
+            .hero {{ min-height: {m_hero_h} !important; }}
+            .hero-title {{ font-size: {m_hero_title}rem !important; }}
+            .about, .services, .portfolio, .process, .testimonials, .faq, .galleries, .contact {{
+                padding-top: {m_spacing}px !important; padding-bottom: {m_spacing}px !important;
+            }}
+            .ps-cover {{ min-height: {m_cover_h} !important; }}
+        """
+
+        # Section visibility on mobile
+        if not m.get("show_process_on_mobile", True):
+            css += ".process { display: none !important; }\n"
+        if not m.get("show_testimonials_on_mobile", True):
+            css += ".testimonials { display: none !important; }\n"
+        if not m.get("show_faq_on_mobile", True):
+            css += ".faq { display: none !important; }\n"
+        if not m.get("show_instagram_on_mobile", False):
+            css += ".instagram { display: none !important; }\n"
+
+        css += "}\n"
+
+    return css
+
+
 def build_index_html(c):
     """Generate index.html from content"""
     site = c["site"]
@@ -192,6 +298,7 @@ def build_index_html(c):
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <style>{build_theme_css(c)}</style>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📸</text></svg>">
 </head>
 <body id="top">
@@ -554,6 +661,7 @@ def build_gallery_html(c):
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <style>{build_theme_css(c)}</style>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📸</text></svg>">
 </head>
 <body class="gallery-page">

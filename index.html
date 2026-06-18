@@ -13,6 +13,45 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+    /* ─── Theme Overrides (from CMS) ─── */
+    :root {
+        --rose: #c4758a;
+        --rose-deep: #a85a70;
+        --rose-light: #fdf2f4;
+        --charcoal: #2c2c2c;
+        --gray: #555555;
+        --ivory: #ffffff;
+        --cream-deep: #fafafa;
+    }
+    body { background: #ffffff; color: #2c2c2c; }
+    .footer { background: #2c2c2c; color: #cccccc; }
+    .section-pad, .about, .services, .portfolio, .process,
+    .testimonials, .faq, .galleries, .contact {
+        padding-top: 120px;
+        padding-bottom: 120px;
+    }
+    .packages-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .portfolio-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .package-card { border-radius: 4px; }
+    .btn { border-radius: 0px; }
+    .ps-masonry { column-count: 3; column-gap: 4px; }
+    .hero { background: linear-gradient(135deg, #fdf2f4 0%, #fef9f0 50%, #f0f7f4 100%); }
+.hero-title, .hero-tag, .hero-sub { color: #2c2c2c; }
+
+        @media (max-width: 600px) {
+            .packages-grid, .portfolio-grid { grid-template-columns: repeat(1, 1fr) !important; gap: 0px !important; }
+            .ps-masonry { column-count: 1 !important; column-gap: 0px !important; }
+            body { font-size: 0.9rem; }
+            .hero { min-height: 70vh !important; }
+            .hero-title { font-size: 2.5rem !important; }
+            .about, .services, .portfolio, .process, .testimonials, .faq, .galleries, .contact {
+                padding-top: 60px !important; padding-bottom: 60px !important;
+            }
+            .ps-cover { min-height: 50vh !important; }
+        .instagram { display: none !important; }
+}
+</style>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📸</text></svg>">
 </head>
 <body id="top">

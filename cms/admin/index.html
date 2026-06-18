@@ -87,7 +87,12 @@
         .item-card {
             background: #fff; border: 1px solid #e0e0e0; border-radius: 8px;
             padding: 20px; margin-bottom: 14px; position: relative;
+            transition: box-shadow 0.2s, opacity 0.2s;
         }
+        .item-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+        .item-card[draggable="true"] { cursor: grab; }
+        .item-card[draggable="true"]:active { cursor: grabbing; }
+        .item-card .item-card-header { cursor: grab; }
         .item-card-header {
             display: flex; justify-content: space-between; align-items: center;
             margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid #f0f0f0;
@@ -182,6 +187,8 @@
         <div class="nav-section">
             <div class="nav-section-title">Site Settings</div>
             <div class="nav-item active" data-panel="site" onclick="showPanel('site')"><span class="nav-icon">⚙</span> Brand & Contact</div>
+            <div class="nav-item" data-panel="theme" onclick="showPanel('theme')"><span class="nav-icon">🎨</span> Theme & Colors</div>
+            <div class="nav-item" data-panel="mobile" onclick="showPanel('mobile')"><span class="nav-icon">📱</span> Mobile Layout</div>
         </div>
         <div class="nav-section">
             <div class="nav-section-title">Homepage</div>

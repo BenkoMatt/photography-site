@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Client Gallery — Grace &amp; Lens Photography</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23d4a574'>📷</text></svg>">
+</head>
+<body class="gallery-page">
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="navbar navbar-solid" id="navbar">
+    <div class="nav-inner">
+        <a href="index.html" class="logo">
+            <span class="logo-script">Grace</span>
+            <span class="logo-amp">&amp;</span>
+            <span class="logo-script">Lens</span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#portfolio">Portfolio</a></li>
+            <li><a href="index.html#contact" class="nav-cta">Inquire</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ============ GALLERY PAGE ============ -->
+<main class="client-gallery-page">
+    <!-- Password Gate -->
+    <div class="gallery-gate" id="galleryGate">
+        <div class="gate-card">
+            <div class="gate-icon">🔒</div>
+            <h1>Your Private Gallery</h1>
+            <p class="gate-sub">Enter your passcode to view your photos</p>
+            <form id="gateForm">
+                <input type="text" id="gateCode" placeholder="e.g. SMITH-0224" required
+                    autocomplete="off" autocapitalize="characters">
+                <button type="submit" class="btn btn-primary btn-full">Unlock Gallery</button>
+                <p class="gate-error" id="gateError"></p>
+            </form>
+            <p class="gate-hint">
+                Don't have a passcode?
+                <a href="index.html#galleries">Learn how to get one</a>
+            </p>
+            <a href="index.html" class="gate-back">← Back to homepage</a>
+        </div>
+    </div>
+
+    <!-- Gallery Content (hidden until passcode entered) -->
+    <div class="gallery-content hidden" id="galleryContent">
+        <div class="container">
+            <div class="gallery-header">
+                <h1 id="galleryTitle">Your Beautiful Gallery</h1>
+                <p class="gallery-date" id="galleryDate"></p>
+                <p class="gallery-description">
+                    Welcome to your private gallery! Here you can view all your edited photos,
+                    share them with family and friends, and download your favorites.
+                    Every image was edited with love and prayer.
+                </p>
+            </div>
+
+            <div class="gallery-toolbar">
+                <div class="gallery-actions">
+                    <button class="btn btn-soft btn-small" id="downloadAllBtn">⬇ Download All</button>
+                    <button class="btn btn-soft btn-small" id="shareBtn">♡ Share Gallery</button>
+                    <button class="btn btn-soft btn-small" id="slideshowBtn">▶ Slideshow</button>
+                </div>
+                <div class="gallery-info-text">
+                    <span id="photoCount">0</span> photos &middot; Click any photo to view full size
+                </div>
+            </div>
+
+            <div class="gallery-grid" id="galleryGrid">
+                <!--
+                    ════════════════════════════════════════════════════════════════
+                    GALLERY PHOTOS — HOW TO EDIT:
+                    Replace each <div class="photo-placeholder"> with:
+                        <img src="images/client-photos/filename.jpg" alt="Description" loading="lazy">
+                    To add more photos, copy any .gallery-item block.
+                    The download link should point to the full-resolution image.
+                    ════════════════════════════════════════════════════════════════
+                -->
+                <div class="gallery-item" data-full="images/client-photos/photo-01.jpg">
+                    <div class="photo-placeholder landscape">
+                        <span>Photo 1</span>
+                        <small>1200 × 800px</small>
+                    </div>
+                    <div class="gallery-item-actions">
+                        <button class="gallery-action" title="Favorite">♡</button>
+                        <a class="gallery-action" title="Download" download>⬇</a>
+                    </div>
+                </div>
+                <div class="gallery-item" data-full="images/client-photos/photo-02.jpg">
+                    <div class="photo-placeholder portrait">
+                        <span>Photo 2</span>
+                        <small>800 × 1200px</small>
+                    </div>
+                    <div class="gallery-item-actions">
+                        <button class="gallery-action" title="Favorite">♡</button>
+                        <a class="gallery-action" title="Download" download>⬇</a>
+                    </div>
+                </div>
+                <div class="gallery-item" data-full="images/client-photos/photo-03.jpg">
+                    <div class="photo-placeholder square">
+                        <span>Photo 3</span>
+                        <small>800 × 800px</small>
+                    </div>
+                    <div class="gallery-item-actions">
+                        <button class="gallery-action" title="Favorite">♡</button>
+                        <a class="gallery-action" title="Download" download>⬇</a>
+                    </div>
+                </div>
+                <div class="gallery-item" data-full="images/client-photos/photo-04.jpg">
+                    <div class="photo-placeholder landscape">
+                        <span>Photo 4</span>
+                        <small>1200 × 800px</small>
+                    </div>
+                    <div class="gallery-item-actions">
+                        <button class="gallery-action" title="Favorite">♡</button>
+                        <a class="gallery-action" title="Download" download>⬇</a>
+                    </div>
+                </div>
+                <div class="gallery-item" data-full="images/client-photos/photo-05.jpg">
+                    <div class="photo-placeholder portrait">
+                        <span>Photo 5</span>
+                        <small>800 × 1200px</small>
+                    </div>
+                    <div class="gallery-item-actions">
+                        <button class="gallery-action" title="Favorite">♡</button>
+                        <a class="gallery-action" title="Download" download>⬇</a>
+                    </div>
+                </div>
+                <div class="gallery-item" data-full="images/client-photos/photo-06.jpg">
+                    <div class="photo-placeholder landscape">
+                        <span>Photo 6</span>
+                        <small>1200 × 800px</small>
+                    </div>
+                    <div class="gallery-item-actions">
+                        <button class="gallery-action" title="Favorite">♡</button>
+                        <a class="gallery-action" title="Download" download>⬇</a>
+                    </div>
+                </div>
+                <div class="gallery-item" data-full="images/client-photos/photo-07.jpg">
+                    <div class="photo-placeholder square">
+                        <span>Photo 7</span>
+                        <small>800 × 800px</small>
+                    </div>
+                    <div class="gallery-item-actions">
+                        <button class="gallery-action" title="Favorite">♡</button>
+                        <a class="gallery-action" title="Download" download>⬇</a>
+                    </div>
+                </div>
+                <div class="gallery-item" data-full="images/client-photos/photo-08.jpg">
+                    <div class="photo-placeholder portrait">
+                        <span>Photo 8</span>
+                        <small>800 × 1200px</small>
+                    </div>
+                    <div class="gallery-item-actions">
+                        <button class="gallery-action" title="Favorite">♡</button>
+                        <a class="gallery-action" title="Download" download>⬇</a>
+                    </div>
+                </div>
+                <div class="gallery-item" data-full="images/client-photos/photo-09.jpg">
+                    <div class="photo-placeholder landscape">
+                        <span>Photo 9</span>
+                        <small>1200 × 800px</small>
+                    </div>
+                    <div class="gallery-item-actions">
+                        <button class="gallery-action" title="Favorite">♡</button>
+                        <a class="gallery-action" title="Download" download>⬇</a>
+                    </div>
+                </div>
+                <div class="gallery-item" data-full="images/client-photos/photo-10.jpg">
+                    <div class="photo-placeholder landscape">
+                        <span>Photo 10</span>
+                        <small>1200 × 800px</small>
+                    </div>
+                    <div class="gallery-item-actions">
+                        <button class="gallery-action" title="Favorite">♡</button>
+                        <a class="gallery-action" title="Download" download>⬇</a>
+                    </div>
+                </div>
+                <div class="gallery-item" data-full="images/client-photos/photo-11.jpg">
+                    <div class="photo-placeholder portrait">
+                        <span>Photo 11</span>
+                        <small>800 × 1200px</small>
+                    </div>
+                    <div class="gallery-item-actions">
+                        <button class="gallery-action" title="Favorite">♡</button>
+                        <a class="gallery-action" title="Download" download>⬇</a>
+                    </div>
+                </div>
+                <div class="gallery-item" data-full="images/client-photos/photo-12.jpg">
+                    <div class="photo-placeholder square">
+                        <span>Photo 12</span>
+                        <small>800 × 800px</small>
+                    </div>
+                    <div class="gallery-item-actions">
+                        <button class="gallery-action" title="Favorite">♡</button>
+                        <a class="gallery-action" title="Download" download>⬇</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-footer-note">
+                <p>
+                    <span class="verse-mark">&ldquo;</span>
+                    Thank you for trusting me with your love story. These photos are yours to cherish,
+                    share, and print forever. If you need any help or want to order prints, don't
+                    hesitate to reach out!
+                    <span class="verse-mark">&rdquo;</span>
+                </p>
+                <p class="gallery-contact-note">
+                    <a href="index.html#contact" class="btn btn-soft">Contact Me</a>
+                    <a href="index.html" class="btn btn-outline">Back to Home</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slideshow overlay -->
+    <div class="slideshow" id="slideshow" aria-hidden="true">
+        <button class="lightbox-close" id="slideshowClose" aria-label="Close">&times;</button>
+        <button class="lightbox-prev" id="slideshowPrev" aria-label="Previous">‹</button>
+        <button class="lightbox-next" id="slideshowNext" aria-label="Next">›</button>
+        <div class="slideshow-content" id="slideshowContent">
+            <img id="slideshowImg" src="" alt="">
+        </div>
+    </div>
+</main>
+
+<script src="js/gallery.js"></script>
+</body>
+</html>

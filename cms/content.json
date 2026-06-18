@@ -370,7 +370,7 @@
   "mobile": {
     "portfolio_columns": 1,
     "gallery_columns": 1,
-    "font_scale": 1.2,
+    "font_scale": 0.7,
     "hero_height": "70vh",
     "hero_title_size": 2.5,
     "section_spacing": 60,

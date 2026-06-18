@@ -1853,6 +1853,11 @@ h1, h2, h3, h4, h5, h6 {
     }
     .nav-links.open { display: flex; }
 
+    /* About: stack image above text on mobile */
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    .about-image { max-width: 400px; margin: 0 auto; order: -1; }
+    .about-image-inner::before { display: none; }
+
     .packages-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
     .package-featured { transform: none; }
 

@@ -897,13 +897,12 @@ function panelMobile() {
 
             '<div style="flex-shrink:0;">' +
                 '<h3 style="font-family:Cormorant Garamond,serif; font-size:1.2rem; margin:0 0 12px; color:#2c2c2c;">Live Phone Preview</h3>' +
-                '<div style="width:280px; height:560px; border:8px solid #2c2c2c; border-radius:32px; overflow:hidden; background:#fff; box-shadow:0 10px 40px rgba(0,0,0,0.15);">' +
-                    '<div style="width:100%; height:100%; overflow-y:auto; border-radius:24px;">' +
-                        '<iframe id="mobilePreviewFrame" src="/" style="width:100%; height:100%; border:none; pointer-events:none;" onload="this.style.opacity=1"></iframe>' +
-                    '</div>' +
+                '<div style="width:300px; height:600px; border:10px solid #1a1a1a; border-radius:40px; overflow:hidden; background:#fff; box-shadow:0 15px 50px rgba(0,0,0,0.2); position:relative;">' +
+                    '<div style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:100px; height:22px; background:#1a1a1a; border-bottom-left-radius:14px; border-bottom-right-radius:14px; z-index:10;"></div>' +
+                    '<iframe id="mobilePreviewFrame" src="/" scrolling="yes" style="width:100%; height:100%; border:none; pointer-events:auto; display:block;" onload="this.style.opacity=1"></iframe>' +
                 '</div>' +
-                '<p style="text-align:center; font-size:0.78rem; color:#888; margin-top:10px;">Save to update preview</p>' +
-                '<button class="btn btn-save" style="margin-top:8px; width:100%;" onclick="saveContent(); setTimeout(function(){document.getElementById(\'mobilePreviewFrame\').src=\'/\'+\'?\'+Date.now()},500)">Save & Refresh Preview</button>' +
+                '<p style="text-align:center; font-size:0.78rem; color:#888; margin-top:10px;">Click inside the phone to scroll · Save to update</p>' +
+                '<button class="btn btn-save" style="margin-top:8px; width:100%;" onclick="saveContent(); setTimeout(function(){document.getElementById(\'mobilePreviewFrame\').src=\'/\'+\'?\'+Date.now()},500)">Save &amp; Refresh Preview</button>' +
             '</div>' +
 
         '</div>' +

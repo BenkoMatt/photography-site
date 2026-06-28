@@ -183,6 +183,8 @@ def build_index_html(c):
     for pkg in services["packages"]:
         featured_class = " package-featured" if pkg.get("featured") else ""
         badge_html = '<div class="package-badge">Most Loved</div>' if pkg.get("featured") else ""
+        obj_pos = pkg.get("object_position")
+        obj_pos_attr = f' style="object-position: {esc(obj_pos)};"' if obj_pos else ""
         btn_class = "btn btn-primary" if pkg.get("featured") else "btn btn-outline"
         features_html = ""
         for feat in pkg["features"]:
@@ -192,7 +194,7 @@ def build_index_html(c):
         <div class="package-card{featured_class}">
             {badge_html}
             <div class="package-card-img">
-                <img src="{esc(pkg["image"])}" alt="{esc(pkg["name"])}" loading="lazy">
+                <img src="{esc(pkg["image"])}" alt="{esc(pkg["name"])}" loading="lazy"{obj_pos_attr}>
             </div>
             <div class="package-body">
                 <h3>{esc(pkg["name"])}</h3>

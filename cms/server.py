@@ -211,9 +211,11 @@ def build_index_html(c):
     portfolio_photos_html = ""
     for photo in portfolio["photos"]:
         tall_class = " portfolio-tall" if photo.get("tall") else ""
+        obj_pos = photo.get("object_position")
+        obj_pos_attr = f' style="object-position: {esc(obj_pos)};"' if obj_pos else ""
         portfolio_photos_html += f'''
             <div class="portfolio-item{tall_class}" data-category="{esc(photo["category"])}">
-                <img src="{esc(photo["src"])}" alt="{esc(photo["alt"])}" loading="lazy">
+                <img src="{esc(photo["src"])}" alt="{esc(photo["alt"])}" loading="lazy"{obj_pos_attr}>
                 <div class="portfolio-overlay"><span class="portfolio-cat">{esc(photo["category"].title())}</span></div>
             </div>'''
 

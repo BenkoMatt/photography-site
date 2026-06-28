@@ -128,7 +128,8 @@
         "src": "photos/gallery/weddings/Isaiah&groomsmen.jpg",
         "alt": "Isaiah and groomsmen",
         "category": "wedding",
-        "tall": false
+        "tall": false,
+        "object_position": "50% 75%"
       },
       {
         "src": "photos/gallery/portraits/tate-and-friends-running.jpg",

@@ -141,6 +141,24 @@
         "alt": "Portrait session",
         "category": "portrait",
         "tall": true
+      },
+      {
+        "src": "photos/gallery/weddings/Gracie_FlowerRing.jpeg",
+        "alt": "Wedding flower ring detail",
+        "category": "wedding",
+        "tall": true
+      },
+      {
+        "src": "photos/gallery/weddings/Gracie_Bridal_Outside.jpeg",
+        "alt": "Bride outside portrait",
+        "category": "wedding",
+        "tall": false
+      },
+      {
+        "src": "photos/gallery/weddings/G_I_WedParty_Tunnel.jpeg",
+        "alt": "Wedding party tunnel",
+        "category": "wedding",
+        "tall": true
       }
     ]
   },

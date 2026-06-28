@@ -113,9 +113,9 @@
     "cta_link": "#contact",
     "photos": [
       {
-        "src": "photos/gallery/portraits/matt-grad.jpeg",
-        "alt": "Graduation portrait",
-        "category": "portrait",
+        "src": "photos/gallery/weddings/Gracie_FlowerRing.jpeg",
+        "alt": "Wedding flower ring detail",
+        "category": "wedding",
         "tall": true
       },
       {
@@ -143,9 +143,9 @@
         "tall": true
       },
       {
-        "src": "photos/gallery/weddings/Gracie_FlowerRing.jpeg",
-        "alt": "Wedding flower ring detail",
-        "category": "wedding",
+        "src": "photos/gallery/portraits/matt-grad.jpeg",
+        "alt": "Graduation portrait",
+        "category": "portrait",
         "tall": true
       },
       {

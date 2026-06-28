@@ -108,7 +108,6 @@ function showPanel(name) {
         case 'services': html = panelServices(); break;
         case 'portfolio': html = panelPortfolio(); break;
         case 'process': html = panelProcess(); break;
-        case 'testimonials': html = panelTestimonials(); break;
         case 'faq': html = panelFaq(); break;
         case 'contact': html = panelContact(); break;
         case 'galleries': html = panelGalleries(); break;
@@ -390,37 +389,6 @@ function panelProcess() {
     '</div>';
 }
 
-function panelTestimonials() {
-    var reviewsHtml = '';
-    content.testimonials.reviews.forEach(function(review, i) {
-        reviewsHtml += '<div class="item-card">' +
-            '<div class="item-card-header">' +
-                '<span class="item-card-title">Review ' + (i+1) + '</span>' +
-                '<div class="item-actions">' +
-                    '<button class="item-btn move" onclick="moveItem(\'testimonials.reviews\', ' + i + ', -1)">↑</button>' +
-                    '<button class="item-btn move" onclick="moveItem(\'testimonials.reviews\', ' + i + ', 1)">↓</button>' +
-                    '<button class="item-btn danger" onclick="removeItem(\'testimonials.reviews\', ' + i + ')">Delete</button>' +
-                '</div>' +
-            '</div>' +
-            '<div class="field"><label class="field-label">Stars (1-5)</label>' +
-            '<select class="field-select" onchange="setVal(\'testimonials.reviews[' + i + '].stars\', parseInt(this.value))">' +
-                [1,2,3,4,5].map(function(s) { return '<option value="' + s + '" ' + (review.stars === s ? 'selected' : '') + '>' + '★'.repeat(s) + '</option>'; }).join('') +
-            '</select></div>' +
-            textarea('testimonials.reviews[' + i + '].text', 'Review Text') +
-            text('testimonials.reviews[' + i + '].author', 'Author Name') +
-        '</div>';
-    });
-
-    return '<div class="panel active">' +
-        '<div class="panel-title">Testimonials</div>' +
-        '<div class="panel-sub">Client reviews shown in the "Kind Words" section.</div>' +
-        text('testimonials.label', 'Section Label') +
-        text('testimonials.title', 'Section Title') +
-        '<div class="items-list" data-array="testimonials.reviews">' + reviewsHtml + '</div>' +
-        '<button class="add-btn" onclick="addTestimonial()">+ Add Testimonial</button>' +
-    '</div>';
-}
-
 function panelFaq() {
     var itemsHtml = '';
     content.faq.items.forEach(function(item, i) {
@@ -600,12 +568,6 @@ function addPortfolioPhoto() {
 function addProcessStep() {
     var num = String(content.process.steps.length + 1).padStart(2, '0');
     content.process.steps.push({ number: num, title: 'New Step', text: '' });
-    setSaveStatus(false);
-    showPanel(currentPanel);
-}
-
-function addTestimonial() {
-    content.testimonials.reviews.push({ stars: 5, text: '', author: '[Client Name]' });
     setSaveStatus(false);
     showPanel(currentPanel);
 }
@@ -884,7 +846,6 @@ function panelMobile() {
                 '<h3 style="font-family:Cormorant Garamond,serif; font-size:1.2rem; margin:24px 0 12px; color:#2c2c2c;">Section Visibility</h3>' +
                 '<p style="font-size:0.82rem; color:#888; margin-bottom:12px;">Hide sections you don\'t want mobile visitors to see (keeps the page faster).</p>' +
                 checkboxField('mobile.show_process_on_mobile', 'Show Process section on mobile') +
-                checkboxField('mobile.show_testimonials_on_mobile', 'Show Testimonials on mobile') +
                 checkboxField('mobile.show_faq_on_mobile', 'Show FAQ on mobile') +
                 checkboxField('mobile.show_instagram_on_mobile', 'Show Instagram feed on mobile') +
 

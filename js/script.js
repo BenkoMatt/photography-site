@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════════════════════════
    GRACE & LENS — Main Page JavaScript
    Features: Navbar scroll, mobile menu, portfolio filter,
-   lightbox, testimonials, form handling, scroll reveal
+   lightbox, form handling, scroll reveal
    ═══════════════════════════════════════════════════════════════ */
 
 (function() {
@@ -173,44 +173,6 @@
     });
 
     // ═══════════════════════════════════════════════════════════════
-    // TESTIMONIALS SLIDER
-    // ═══════════════════════════════════════════════════════════════
-    var testimonials = document.querySelectorAll('.testimonial');
-    var dots = document.querySelectorAll('.dot');
-    var currentTestimonial = 0;
-    var testimonialInterval;
-
-    function showTestimonial(index) {
-        testimonials.forEach(function(t) { t.classList.remove('active'); });
-        dots.forEach(function(d) { d.classList.remove('active'); });
-        if (testimonials[index]) testimonials[index].classList.add('active');
-        if (dots[index]) dots[index].classList.add('active');
-        currentTestimonial = index;
-    }
-
-    function nextTestimonial() {
-        showTestimonial((currentTestimonial + 1) % testimonials.length);
-    }
-
-    function startTestimonialSlider() {
-        testimonialInterval = setInterval(nextTestimonial, 6000);
-    }
-
-    function stopTestimonialSlider() {
-        if (testimonialInterval) clearInterval(testimonialInterval);
-    }
-
-    dots.forEach(function(dot, index) {
-        dot.addEventListener('click', function() {
-            stopTestimonialSlider();
-            showTestimonial(index);
-            startTestimonialSlider();
-        });
-    });
-
-    if (testimonials.length > 0) startTestimonialSlider();
-
-    // ═══════════════════════════════════════════════════════════════
     // CONTACT FORM
     // ═══════════════════════════════════════════════════════════════
     var contactForm = document.getElementById('contactForm');
@@ -317,7 +279,7 @@
     // Add .reveal class to elements you want to animate on scroll
     var revealElements = document.querySelectorAll(
         '.section-header, .package-card, .about-image, .about-text, ' +
-        '.testimonial-slider, .gallery-access, .contact-info, .contact-form-card'
+        '.gallery-access, .contact-info, .contact-form-card'
     );
 
     revealElements.forEach(function(el) {

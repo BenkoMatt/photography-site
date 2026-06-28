@@ -170,27 +170,6 @@
       }
     ]
   },
-  "testimonials": {
-    "label": "Kind Words",
-    "title": "Don't Just Take My Word for It",
-    "reviews": [
-      {
-        "stars": 5,
-        "text": "She made us feel so comfortable and natural. Even my husband — who hates taking photos — said he had fun. We felt truly seen!",
-        "author": "[Client Name]"
-      },
-      {
-        "stars": 5,
-        "text": "Somehow she captured the way he looks at me when I'm not looking. Every photo tells our story perfectly — what a blessing!",
-        "author": "[Client Name]"
-      },
-      {
-        "stars": 5,
-        "text": "From the first call, we knew she was the one. The gallery made us fall in love all over again. We are so thankful — absolutely worth every penny.",
-        "author": "[Client Name]"
-      }
-    ]
-  },
   "faq": {
     "label": "Got Questions?",
     "title": "The Couple Session Q&A",
@@ -375,7 +354,6 @@
     "hero_title_size": 2.5,
     "section_spacing": 60,
     "show_process_on_mobile": true,
-    "show_testimonials_on_mobile": true,
     "show_faq_on_mobile": true,
     "show_instagram_on_mobile": false,
     "nav_style": "hamburger",

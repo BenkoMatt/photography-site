@@ -97,7 +97,7 @@ def build_theme_css(c):
     body {{ background: {bg_color}; color: {text_color}; }}
     .footer {{ background: {footer_bg}; color: {footer_text}; }}
     .section-pad, .about, .services, .portfolio, .process,
-    .testimonials, .faq, .galleries, .contact {{
+    .faq, .galleries, .contact {{
         padding-top: {section_spacing}px;
         padding-bottom: {section_spacing}px;
     }}
@@ -147,7 +147,7 @@ def build_theme_css(c):
             body {{ font-size: {m_font}rem; }}
             .hero {{ min-height: {m_hero_h} !important; }}
             .hero-title {{ font-size: {m_hero_title}rem !important; }}
-            .about, .services, .portfolio, .process, .testimonials, .faq, .galleries, .contact {{
+            .about, .services, .portfolio, .process, .faq, .galleries, .contact {{
                 padding-top: {m_spacing}px !important; padding-bottom: {m_spacing}px !important;
             }}
             .ps-cover {{ min-height: {m_cover_h} !important; }}
@@ -156,8 +156,6 @@ def build_theme_css(c):
         # Section visibility on mobile
         if not m.get("show_process_on_mobile", True):
             css += ".process { display: none !important; }\n"
-        if not m.get("show_testimonials_on_mobile", True):
-            css += ".testimonials { display: none !important; }\n"
         if not m.get("show_faq_on_mobile", True):
             css += ".faq { display: none !important; }\n"
         if not m.get("show_instagram_on_mobile", False):
@@ -176,7 +174,6 @@ def build_index_html(c):
     services = c["services"]
     portfolio = c["portfolio"]
     process = c["process"]
-    testimonials = c["testimonials"]
     faq = c["faq"]
     galleries = c["client_galleries"]
     contact = c["contact"]
@@ -226,17 +223,6 @@ def build_index_html(c):
                 <div class="process-number">{esc(step["number"])}</div>
                 <h3>{esc(step["title"])}</h3>
                 <p>{esc(step["text"])}</p>
-            </div>'''
-
-    # Build testimonials HTML
-    testimonials_html = ""
-    for review in testimonials["reviews"]:
-        stars = "★" * review["stars"]
-        testimonials_html += f'''
-            <div class="testimonial">
-                <div class="testimonial-stars">{stars}</div>
-                <blockquote>"{esc(review["text"])}"</blockquote>
-                <cite>— {esc(review["author"])}</cite>
             </div>'''
 
     # Build FAQ HTML
@@ -315,7 +301,6 @@ def build_index_html(c):
             <li><a href="#services">Pricing</a></li>
             <li><a href="#portfolio">Gallery</a></li>
             <li><a href="#process">Process</a></li>
-            <li><a href="#testimonials">Kind Words</a></li>
             <li><a href="#faq">FAQ</a></li>
             <li><a href="#galleries">Client Galleries</a></li>
             <li><a href="#contact" class="nav-cta">Let's Connect</a></li>
@@ -412,19 +397,6 @@ def build_index_html(c):
         </div>
         <div class="process-grid">
 {process_html}
-        </div>
-    </div>
-</section>
-
-<!-- ============ TESTIMONIALS ============ -->
-<section class="testimonials" id="testimonials">
-    <div class="container">
-        <div class="section-header">
-            <p class="section-label">{esc(testimonials["label"])}</p>
-            <h2 class="section-title">{esc(testimonials["title"])}</h2>
-        </div>
-        <div class="testimonials-grid">
-{testimonials_html}
         </div>
     </div>
 </section>

@@ -717,53 +717,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   TESTIMONIALS / KIND WORDS
-   ═══════════════════════════════════════════════════════════════ */
-.testimonials {
-    padding: var(--section-pad);
-    background: var(--ivory);
-}
-
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-}
-
-.testimonial {
-    background: var(--cream-deep);
-    padding: 40px;
-    border-radius: var(--radius);
-    border-left: 3px solid var(--rose);
-}
-
-.testimonial-stars {
-    color: var(--rose);
-    font-size: 1rem;
-    margin-bottom: 16px;
-    letter-spacing: 2px;
-}
-
-.testimonial blockquote {
-    font-family: var(--font-serif);
-    font-size: 1.15rem;
-    font-style: italic;
-    line-height: 1.7;
-    color: #444;
-    margin-bottom: 20px;
-}
-
-.testimonial cite {
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--gray-light);
-    font-style: normal;
-}
-
-/* ═══════════════════════════════════════════════════════════════
    FAQ
    ═══════════════════════════════════════════════════════════════ */
 .faq {
@@ -1866,8 +1819,6 @@ h1, h2, h3, h4, h5, h6 {
     .portfolio-wide { grid-column: span 1; }
 
     .process-grid { grid-template-columns: repeat(2, 1fr); }
-
-    .testimonials-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
 
     .gallery-access { grid-template-columns: 1fr; gap: 2rem; }
 

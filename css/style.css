@@ -55,7 +55,7 @@ body {
     font-weight: 400;
     color: var(--charcoal);
     line-height: 1.7;
-    background: url('photos/backgrounds/flower_background.jpg') repeat;
+    background: var(--ivory);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
 }

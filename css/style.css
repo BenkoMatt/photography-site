@@ -722,7 +722,7 @@ h1, h2, h3, h4, h5, h6 {
    ═══════════════════════════════════════════════════════════════ */
 .faq {
     padding: var(--section-pad);
-    background: rgba(237, 236, 230, 0.9);
+    background: #ffffff;
 }
 
 .faq-list {

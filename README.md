@@ -1,4 +1,4 @@
-# Jenna Lynn Photography — Wedding & Couples Photography Website
+# Jenna Lynn Photography — Seniors, Couples, and Wedding Photography Website
 
 A professional, elegant photography website for Jenna Lynn Photography, specializing in
 couples and wedding photography in Michigan (available worldwide). Features a full landing
@@ -83,9 +83,9 @@ In `index.html`, search for and replace:
 
 | Current | What to change |
 |---|---|
-| `hello@photographybyjennalynn.com` | Your email (contact section + footer) |
+| `gallerybyjennalynn@gmail.com` | Your email (contact section + footer) |
 | `Michigan — Available Worldwide` | Your specific city if desired |
-| `@jennalynnphotography` | Your Instagram handle |
+| `@photographybyjennalynn_` | Your Instagram handle |
 | `#` in footer social links | Your actual social media URLs |
 
 ### 2. Add Portfolio Photos
@@ -208,9 +208,8 @@ Create a POST endpoint at `/api/contact` and send form data via `fetch()`.
 In `index.html`, find the footer section. Replace `#` placeholders with your URLs:
 
 ```html
-<li><a href="https://instagram.com/jennalynnphotography">Instagram</a></li>
-<li><a href="https://pinterest.com/yourprofile">Pinterest</a></li>
-<li><a href="https://facebook.com/yourpage">Facebook</a></li>
+<li><a href="https://instagram.com/photographybyjennalynn_">Instagram</a></li>
+<li><a href="mailto:gallerybyjennalynn@gmail.com">Email</a></li>
 ```
 
 ---

@@ -278,11 +278,11 @@ def build_index_html(c):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Wedding and couples photography in Michigan, available worldwide. Sessions crafted with you in mind.">
-    <title>{esc(site["business_name"])} — Wedding &amp; Couples Photography</title>
+    <meta name="description" content="Seniors, couples, and wedding photography in Michigan, available worldwide. Sessions crafted with you in mind.">
+    <title>{esc(site["business_name"])} — Seniors, Couples, and Wedding Photography</title>
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="{esc(site["business_name"])} — Wedding &amp; Couples Photography" />
-    <meta property="og:description" content="Wedding and couples photography in Michigan, available worldwide." />
+    <meta property="og:title" content="{esc(site["business_name"])} — Seniors, Couples, and Wedding Photography" />
+    <meta property="og:description" content="Seniors, couples, and wedding photography in Michigan, available worldwide." />
     <meta property="og:image" content="{esc(about["portrait_image"])}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -567,8 +567,6 @@ def build_index_html(c):
                 <h4>Connect</h4>
                 <ul>
                     <li><a href="{esc(site["instagram_url"])}">Instagram</a></li>
-                    <li><a href="{esc(site["pinterest_url"])}">Pinterest</a></li>
-                    <li><a href="{esc(site["facebook_url"])}">Facebook</a></li>
                     <li><a href="mailto:{esc(site["email"])}">Email</a></li>
                 </ul>
             </div>

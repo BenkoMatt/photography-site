@@ -1,22 +1,22 @@
 {
   "site": {
     "business_name": "Jenna Lynn Photography",
-    "tagline": "Wedding & Couples Photographer",
-    "email": "hello@photographybyjennalynn.com",
+    "tagline": "Seniors, Couples, and Wedding Photographer",
+    "email": "gallerybyjennalynn@gmail.com",
     "phone": "",
     "location": "Michigan — Available Worldwide",
-    "instagram": "@jennalynnphotography",
-    "instagram_url": "#",
-    "facebook_url": "#",
-    "pinterest_url": "#",
+    "instagram": "@photographybyjennalynn_",
+    "instagram_url": "https://instagram.com/photographybyjennalynn_",
+    "facebook_url": "",
+    "pinterest_url": "",
     "footer_year": 2026,
     "footer_verse_text": "Commit to the Lord whatever you do.",
     "footer_verse_ref": "Proverbs 16:3"
   },
   "hero": {
-    "tagline": "Wedding & Couples Photographer",
-    "title_line1": "Your Love Story,",
-    "title_line2": "Beautifully Told",
+    "tagline": "Seniors, Couples, and Wedding Photographer",
+    "title_line1": "Your session is waiting!",
+    "title_line2": "",
     "verse_text": "Three things will last forever — faith, hope, and love — and the greatest of these is love.",
     "verse_ref": "1 Corinthians 13:13",
     "subtitle": "Authentic, joyful photography that celebrates the love God gave you.",
@@ -41,8 +41,8 @@
   },
   "services": {
     "label": "Pricing",
-    "title": "Sessions Crafted With You in Mind",
-    "subtitle": "Every love story is unique — your photos should be too. Choose the experience that fits your season.",
+    "title": "",
+    "subtitle": "Choose the experience that fits your season.",
     "packages": [
       {
         "name": "Portraits",
@@ -193,7 +193,7 @@
   },
   "faq": {
     "label": "Got Questions?",
-    "title": "The Couple Session Q&A",
+    "title": "",
     "items": [
       {
         "question": "We're not models — are you sure this is for us?",

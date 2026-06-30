@@ -222,8 +222,6 @@ function panelSite() {
         text('site.location', 'Location') +
         text('site.instagram', 'Instagram Handle') +
         text('site.instagram_url', 'Instagram URL') +
-        text('site.facebook_url', 'Facebook URL') +
-        text('site.pinterest_url', 'Pinterest URL') +
         number('site.footer_year', 'Footer Copyright Year') +
         text('site.footer_verse_text', 'Footer Bible Verse Text') +
         text('site.footer_verse_ref', 'Footer Bible Verse Reference') +

@@ -259,6 +259,15 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: 0.1em;
     line-height: 0.8;
 }
+.logo-photo {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: var(--charcoal);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-left: 0.3em;
+}
 
 .nav-links {
     display: flex;
@@ -1119,6 +1128,15 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: 0.1em;
     line-height: 0.8;
 }
+.footer-logo-photo {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--ivory);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-left: 0.3em;
+}
 
 .footer-tagline {
     font-size: 0.9rem;
@@ -1861,6 +1879,7 @@ h1, h2, h3, h4, h5, h6 {
     .nav-toggle { display: flex; }
     .logo-jenna { font-size: 1.2rem; }
     .logo-lynn { font-size: 1.9rem; }
+    .logo-photo { font-size: 0.75rem; }
     .nav-links {
         position: absolute;
         top: 72px;

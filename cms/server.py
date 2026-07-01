@@ -296,7 +296,7 @@ def build_index_html(c):
 <!-- ============ NAVIGATION ============ -->
 <nav class="navbar" id="navbar">
     <div class="nav-inner">
-        <a href="#top" class="logo"><span class="logo-jenna">JENNA</span> <span class="logo-lynn">Lynn</span></a>
+        <a href="#top" class="logo"><span class="logo-jenna">JENNA</span> <span class="logo-lynn">Lynn</span> <span class="logo-photo">Photography</span></a>
         <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
             <span></span><span></span><span></span>
         </button>
@@ -551,7 +551,7 @@ def build_index_html(c):
     <div class="container">
         <div class="footer-grid">
             <div class="footer-col footer-brand">
-                <div class="footer-logo-wordmark"><span class="logo-jenna footer-logo-jenna">JENNA</span> <span class="logo-lynn footer-logo-lynn">Lynn</span></div>
+                <div class="footer-logo-wordmark"><span class="logo-jenna footer-logo-jenna">JENNA</span> <span class="logo-lynn footer-logo-lynn">Lynn</span> <span class="logo-photo footer-logo-photo">Photography</span></div>
                 <p class="footer-tagline">{esc(site["tagline"])}<br>{esc(site["location"])}</p>
             </div>
             <div class="footer-col">
